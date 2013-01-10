@@ -1,0 +1,17 @@
+= ABOUT =
+
+A simple "lorem ipsum" generator directly in your /dev!
+Not so useful, but not so useles...
+
+= COMPILATION =
+
+man make
+
+= LOADING =
+
+sudo insmod dev-ipsum.ko
+sudo mknod /dev/ipsum c 89 1
+
+= UNLOADING =
+
+sudo rmmod dev-ipsum

@@ -1,3 +1,22 @@
+/*
+** dev-ipsum.c for Dev-Ipsum in /home/rohja/Projects/dev-ipsum
+**
+** Made by Paul "Rohja" Lesellier
+** Login   <rohja@rohja.com>
+**
+** Started on  Thu Jan 10 19:16:41 2013 paul lesellier
+*/
+
+/*
+ * ----------------------------------------------------------------------------
+ * "THE BEER-WARE LICENSE" (Revision 42):
+ * Paul 'Rohja' Lesellier <rohja@rohja.com> wrote this file. As long as you
+ * retain this notice you can do whatever you want with this stuff. If we meet
+ * some day, and you think this stuff is worth it, you can buy me a beer
+ * in return.
+ * ----------------------------------------------------------------------------
+ */
+
 /* #include <linux/kernel.h> */
 #include <linux/module.h>
 #include <linux/string.h>
@@ -5,7 +24,7 @@
 #include <asm/uaccess.h>
 
 /* License and Infos */
-MODULE_LICENSE("Dual BSD/GPL");
+MODULE_LICENSE("BEER_WARE");
 MODULE_DESCRIPTION("Lorem Ipsum Generator");
 MODULE_AUTHOR("Paul 'Rohja' Lesellier <rohja@rohja.com>");
 
