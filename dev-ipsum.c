@@ -37,12 +37,15 @@ static int ipsum_rls(struct inode *, struct file *);
 static ssize_t ipsum_read(struct file *, char *, size_t, loff_t *);
 /* Write */
 static ssize_t ipsum_write(struct file *, const char *, size_t, loff_t *);
+/* IOCTL */
+static long ipsum_ioctl(struct file *, unsigned int, unsigned long);
 /* Configuration */
 static struct file_operations fops = {
   .read = ipsum_read,
   .open = ipsum_open,
   .write = ipsum_write,
   .release = ipsum_rls,
+  .unlocked_ioctl = ipsum_ioctl,
 };
 
 /* Vars */
@@ -108,5 +111,13 @@ static ssize_t ipsum_read(struct file *file_, char *output_buffer, size_t output
 static ssize_t ipsum_write(struct file *file_, const char *input_buffer, size_t input_size, loff_t *off_)
 {
   printk(KERN_ALERT "Trying to write %d Bytes to Ipsum.", (int)input_size);
+  return 0;
+}
+
+/* IOCTL */
+static long ipsum_ioctl(struct file *file_, unsigned int ioctl_num, unsigned long ioctl_param)
+{
+  /*DEBUG*/
+  printk("Ipsum IOCTL: num = %u, param = %u", ioctl_num, (long)ioctl_param);
   return 0;
 }
