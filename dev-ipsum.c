@@ -17,7 +17,6 @@
  * ----------------------------------------------------------------------------
  */
 
-/* #include <linux/kernel.h> */
 #include <linux/module.h>
 #include <linux/string.h>
 #include <linux/fs.h>
@@ -87,15 +86,15 @@ static int ipsum_rls(struct inode *inode_, struct file *file_)
 /* Read */
 static ssize_t ipsum_read(struct file *file_, char *output_buffer, size_t output_size, loff_t *off_)
 {
+  unsigned int i = 0;
+  unsigned int ipsum_len;
+  unsigned int count = 0;
+
   printk(KERN_ALERT "Trying to read %d Bytes from Ipsum.", (int)output_size);
 
-  unsigned int i = 0;
-  unsigned int ipsum_len = strlen(ipsum_text);
-  unsigned int count = 0;
+  ipsum_len = strlen(ipsum_text);
   while (output_size)
     {
-      printk(KERN_ALERT "i = %u | output_size = %d\n", i, (int) output_size);
-      // output_buffer[i] = ipsum_text[i];
       put_user(ipsum_text[i++], output_buffer++);
       output_size--;
       if (i == ipsum_len)
@@ -111,7 +110,3 @@ static ssize_t ipsum_write(struct file *file_, const char *input_buffer, size_t 
   printk(KERN_ALERT "Trying to write %d Bytes to Ipsum.", (int)input_size);
   return 0;
 }
-
-/* Register */
-/* module_init(init_ipsum); */
-/* module_exit(exit_ipsum); */
