@@ -56,33 +56,33 @@ int init_module(void)
 {
   int t;
 
-  printk(KERN_ALERT "IPSUM LOADED\n");
+  printk(KERN_INFO "IPSUM LOADED\n");
   t = register_chrdev(89, "ipsum", &fops);
   if (t < 0)
-    printk(KERN_ALERT "Device registration failed!...");
+    printk(KERN_WARNING "Device registration failed!...");
   else
-    printk(KERN_ALERT "Device registred!");
+    printk(KERN_NOTICE "Device registred!");
   return t;
 }
 
 /* Exit */
 void cleanup_module(void)
 {
-  printk(KERN_ALERT "IPSUM UNLOADED\n");
+  printk(KERN_INFO "IPSUM UNLOADED\n");
   unregister_chrdev(89, "ipsum");
 }
 
 /* Open*/
 static int ipsum_open(struct inode *inode_, struct file *file_)
 {
-  printk(KERN_ALERT "Ipsum opened.");
+  printk(KERN_INFO "Ipsum opened.");
   return 0;
 }
 
 /* Release */
 static int ipsum_rls(struct inode *inode_, struct file *file_)
 {
-  printk(KERN_ALERT "Ipsum closed.");
+  printk(KERN_INFO "Ipsum closed.");
   return 0;
 }
 
@@ -93,7 +93,7 @@ static ssize_t ipsum_read(struct file *file_, char *output_buffer, size_t output
   unsigned int ipsum_len;
   unsigned int count = 0;
 
-  printk(KERN_ALERT "Trying to read %d Bytes from Ipsum.", (int)output_size);
+  printk(KERN_NOTICE "Trying to read %d Bytes from Ipsum.", (int)output_size);
 
   ipsum_len = strlen(ipsum_text);
   while (output_size)
@@ -110,7 +110,7 @@ static ssize_t ipsum_read(struct file *file_, char *output_buffer, size_t output
 /* Write */
 static ssize_t ipsum_write(struct file *file_, const char *input_buffer, size_t input_size, loff_t *off_)
 {
-  printk(KERN_ALERT "Trying to write %d Bytes to Ipsum.", (int)input_size);
+  printk(KERN_NOTICE "Trying to write %d Bytes to Ipsum.", (int)input_size);
   return 0;
 }
 
